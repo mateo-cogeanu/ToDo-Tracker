@@ -13,14 +13,14 @@ struct TodoRowView: View {
             }) {
                 Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
                     .imageScale(.large)
-                    .foregroundStyle(todo.isCompleted ? .green : .gray)
+                    .foregroundStyle(todo.isCompleted ? .green : todo.color.color)
             }
             .buttonStyle(.plain)
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(todo.title)
                     .strikethrough(todo.isCompleted)
-                    .foregroundStyle(todo.isCompleted ? .gray : .primary)
+                    .foregroundStyle(todo.isCompleted ? .gray : todo.color.color)
                 
                 if let dueDate = todo.dueDate {
                     Text(dueDate.formatted(date: .abbreviated, time: .shortened))
